@@ -29,5 +29,16 @@
 
             return true;
         }
+
+        public int FindMax()
+        {
+            if( _myArray.Length == 0)
+            {
+                throw new InvalidOperationException("Array is empty");
+               
+            }
+            return _myArray.Max();
+        }
+
     }
 }
