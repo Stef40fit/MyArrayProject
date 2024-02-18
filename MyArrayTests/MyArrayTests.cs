@@ -1,3 +1,4 @@
+using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
 using MyArray1;
 
 namespace MyArrayTests
@@ -32,11 +33,29 @@ namespace MyArrayTests
         {
             //Arange
             var myArray = new MyArray(20);
-            //Act
+            //Act & Assert
 
-            //Assert
+            Assert.Throws<InvalidOperationException>(() => myArray.Replace(30, 20));
+        }
+        [Test]
+        public void FindMaxArrayLenght_ShouldReturnMaxArrayLenght()
+        {
+            // Arrange
+            var myArray = new MyArray(20);
 
-            Assert.Throws<ArgumentException>(() => myArray.Replace(30, 20));
+            // Act
+            var result = myArray.FindMax();
+            // Assert
+            Assert.That(result, Is.EqualTo(19));
+        }
+        [Test]
+        public void FindMaxArrayLenght_ShouldThrowsArgumentException_IfArrayIsEmpty()
+        {
+            // Arrange
+            var myArray = new MyArray(0);
+
+            // Act & Assert
+            Assert.Throws<InvalidOperationException>(() => myArray.FindMax());
         }
     }
 }
